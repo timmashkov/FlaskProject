@@ -1,21 +1,11 @@
 from flask import Flask
+from flask import render_template
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return f'''
-    <!DOCTYPE html>
-    <html>
-        <head>
-            <title> Home page </title>
-            <meta charset='utf-8'>
-        </head>
-        <body>
-            <p align='center'> The welcome data for user </p>
-        </body>
-    </html>
-    '''
+    return render_template('index.html')
 
 @app.route('/<path:x>')
 def info(x):
