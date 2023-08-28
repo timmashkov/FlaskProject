@@ -10,3 +10,7 @@ def index():
 @app.route('/<path:x>')
 def info(x):
     return f'{x}'
+
+
+if __name__ == '__main__':
+    app.run()
