@@ -4,9 +4,13 @@
     <meta charset="UTF-8">
     <title>Home page</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
 
+</head>
 <body>
     <p align='center' > The welcome data for user </p>
+    <div>
+    <img src="{{ url_for('static', filename='img.jpg') }}"
+    alt="img" width="240" height="360">
+    </div>
 </body>
 </html>
