@@ -7,6 +7,11 @@
 
 </head>
 <body>
+<ul>
+    {% for word in menu %}
+        <li>{{ word }}</li>
+    {% endfor %}
+</ul>
     <p align='center' > The welcome data for user </p>
     <div>
     <img src="{{ url_for('static', filename='img_1.jpg') }}"
