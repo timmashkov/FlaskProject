@@ -7,6 +7,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
+    print(url_for('index'))
     words = ['Pretty', 'Beautiful', 'Gorgeous', 'Great']
     shuffle(words)
     return render_template('index.html', word=choice(words), title='Initial page')
@@ -19,11 +20,9 @@ def greeting():
     menu = ['News', 'Events', 'Contacts']
     return render_template('greeting.html', phrase=string, menu=menu)
 
-@app.route('/test_url_for/<int:x>')
-def test_url(x):
-    resp = f'The val x is {x}<br>'
-    resp += f'Function url_for {url_for("test_url", x=x, data="new_data", sign="?")}'
-    return resp
+@app.route('/temp_unit/<title>')
+def temp_unit(title):
+    return render_template('temp_unit.html', word=title)
 
 
 if __name__ == '__main__':

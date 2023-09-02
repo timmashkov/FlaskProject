@@ -1,22 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Home page</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+{% extends 'index.html' %}
 
-</head>
-<body>
-<ul>
-    {% for word in menu %}
-        <li>{{ word }}</li>
-    {% endfor %}
-</ul>
-    <p align='center' > The welcome data for user </p>
-    <div>
+{% block content %}
+<div>
+    <p align='center' > The second page </p>
     <img src="{{ url_for('static', filename='img_1.jpg') }}"
     alt="img" width="240" height="360">
-    </div>
+    {% for i in menu %}
+        <ul>{{ i }}</ul>
+    {% endfor %}
     <p align='center' >{{ phrase }}</p>
-</body>
-</html>
+</div>
+
+{% endblock %}

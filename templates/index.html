@@ -5,6 +5,7 @@
     <title>{{ title }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
+{% block content %}
 </head>
 <body>
     <p align='center' > The welcome data for user </p>
@@ -13,5 +14,7 @@
     alt="img" width="240" height="360">
     </div>
     <p align='center' > This is {{ word }} Akagi</p>
+    <a href="/greeting">Next page</a>
 </body>
 </html>
+{% endblock %}
