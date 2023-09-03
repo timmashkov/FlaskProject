@@ -1,9 +1,15 @@
-from flask import Flask
-from flask import render_template, url_for
 from random import choice, shuffle, randrange, randint
 
+from flask import Flask
+from flask import render_template, url_for
+
+from instance.model import db
 
 app = Flask(__name__)
+# Создаем базу данных
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///my_database.db'
+db.init_app(app)
+
 
 @app.route('/')
 def index():
@@ -19,6 +25,7 @@ def greeting():
     string = f'Your lucky number today is {choice(numbers)}'
     menu = ['News', 'Events', 'Contacts']
     return render_template('greeting.html', phrase=string, menu=menu)
+
 
 @app.route('/temp_unit/<title>')
 def temp_unit(title):
