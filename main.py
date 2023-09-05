@@ -3,11 +3,13 @@ from random import choice, shuffle, randrange, randint
 from flask import Flask
 from flask import render_template, url_for
 
-from instance.model import db
+from instance.model import db, User, Post, Comment
 
 app = Flask(__name__)
 # Создаем базу данных
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///my_database.db'
+#  app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql:///username:password@hostmane/db_name' для mysql
+#  app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2:///username:password@hostmane/db_name' для postgresql
 db.init_app(app)
 
 
@@ -32,5 +34,10 @@ def temp_unit(title):
     return render_template('temp_unit.html', word=title)
 
 
-if __name__ == '__main__':
-    app.run(debug=True)
+@app.cli.command('init-db')
+def init_db():
+    db.create_all()
+
+
+#  if __name__ == '__main__':
+   #app.run(debug=True)
