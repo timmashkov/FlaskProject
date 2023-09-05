@@ -38,6 +38,13 @@ def temp_unit(title):
 def init_db():
     db.create_all()
 
+@app.cli.command('add-john')
+def add_user():
+    user = User(username='John', email='John@example.com')
+    db.session.add(user)
+    db.session.commit()
+
+
 
 #  if __name__ == '__main__':
    #app.run(debug=True)
