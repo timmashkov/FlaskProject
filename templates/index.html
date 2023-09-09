@@ -9,12 +9,13 @@
 </head>
 <body>
     <p align='center' > The welcome data for user </p>
+    <a href="/init-db">DB creation</a>
     <div>
     <img src="{{ url_for('static', filename='img.jpg') }}"
     alt="img" width="240" height="360">
     </div>
     <p align='center' > This is {{ word }} Akagi</p>
-    <a href="/greeting">Next page</a>
+    <a href="/add-john">Add John</a>
 </body>
 </html>
 {% endblock %}

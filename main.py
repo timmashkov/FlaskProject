@@ -1,7 +1,7 @@
 from random import choice, shuffle, randrange, randint
 
 from flask import Flask
-from flask import render_template, url_for
+from flask import render_template, url_for, redirect
 
 from instance.model import db, User, Post, Comment
 
@@ -34,15 +34,19 @@ def temp_unit(title):
     return render_template('temp_unit.html', word=title)
 
 
-@app.cli.command('init-db')
+#@app.cli.command('init-db')
+@app.route('/init-db')
 def init_db():
     db.create_all()
+    return redirect(url_for('index'))
 
-@app.cli.command('add-john')
+#@app.cli.command('add-john')
+@app.route('/add-john')
 def add_user():
     user = User(username='John', email='John@example.com')
     db.session.add(user)
     db.session.commit()
+    return render_template('temp_unit.html')
 
 
 
